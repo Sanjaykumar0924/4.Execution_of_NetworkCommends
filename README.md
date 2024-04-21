@@ -24,7 +24,7 @@ This commands includes
 • IP Commands
 <BR>
 • Other IP Commands e.g. show ip route etc.
-<BR>
+
 ## Program:
 ## Server:
 ![image](https://github.com/rakshithaprakashkumar11/4.Execution_of_NetworkCommends/assets/150994181/5c9f1b6b-337e-4b7d-84e8-4d1357ee1523)
