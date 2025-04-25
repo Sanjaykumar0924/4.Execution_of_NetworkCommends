@@ -1,7 +1,8 @@
 # 4.Execution_of_NetworkCommands
 ## AIM :Use of Network commands in Real Time environment
 ## Software : Command Prompt And Network Protocol Analyzer
-## Procedure: To do this EXPERIMENT- follows these steps:
+## Procedure: 
+To do this EXPERIMENT- follows these steps:
 <BR>
 In this EXPERIMENT- students have to understand basic networking commands e.g cpdump, netstat, ifconfig, nslookup ,traceroute and also Capture ping and traceroute PDUs using a network protocol analyzer 
 <BR>
@@ -24,25 +25,39 @@ This commands includes
 • IP Commands
 <BR>
 • Other IP Commands e.g. show ip route etc.
+<BR>
 
-## Program:
-## Server:
-![image](https://github.com/rakshithaprakashkumar11/4.Execution_of_NetworkCommends/assets/150994181/5c9f1b6b-337e-4b7d-84e8-4d1357ee1523)
-## Client:
-![image](https://github.com/rakshithaprakashkumar11/4.Execution_of_NetworkCommends/assets/150994181/d2dd06bd-01d4-4b88-8ede-9c5c496b5b30)
-## Tracert:
-![image](https://github.com/rakshithaprakashkumar11/4.Execution_of_NetworkCommends/assets/150994181/bdc3b2ab-574b-4b83-a8bb-5267ae6f6433)
+## program
+PING COMMAND
 
-
+CLIENT:
+```Python
+import socket
+from pythonping import ping
+s=socket.socket()
+s.bind(('localhost',8000))
+s.listen(5)
+c,addr=s.accept()
+while True:
+ hostname=c.recv(1024).decode()
+ try:
+ c.send(str(ping(hostname, verbose=False)).encode())
+ except KeyError:
+ c.send("Not Found".encode())
+```
+SERVER:
+```python
+import socket
+s=socket.socket()
+s.connect(('localhost',8000))
+while True:
+ ip=input("Enter the website you want to ping ")
+ s.send(ip.encode())
+ print(s.recv(1024).decode())
+```
 
 ## Output
-## Server:
-![image](https://github.com/rakshithaprakashkumar11/4.Execution_of_NetworkCommends/assets/150994181/49c4fb8b-df43-44e2-9368-b52a80cdc823)
-## Client:
-![image](https://github.com/rakshithaprakashkumar11/4.Execution_of_NetworkCommends/assets/150994181/043b9b60-b091-46a3-93b6-69e7ecac5aea)
-## Tracert:
-![image](https://github.com/rakshithaprakashkumar11/4.Execution_of_NetworkCommends/assets/150994181/319fd0ee-0662-4b55-a11d-1bc9882f61ec)
-
+![ping](https://github.com/user-attachments/assets/366641b9-f4d2-4bf7-b498-1250f23feb13)
 
 
 ## Result
